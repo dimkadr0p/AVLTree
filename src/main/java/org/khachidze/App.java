@@ -1,6 +1,8 @@
 package org.khachidze;
 
 
+import org.khachidze.enums.Mode;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -21,13 +23,13 @@ public class App {
 
         System.out.println("последний узел в дереве:" + avlTree.findLast().data);
 
-        List<String> greaterSet = avlTree.query("g", "greater");
+        List<String> greaterSet = avlTree.query("g", Mode.GREATER);
         System.out.println("Строки, больше 'g': " + greaterSet);
 
-        List<String> lessSet = avlTree.query("g", "less");
+        List<String> lessSet = avlTree.query("g", Mode.LESS);
         System.out.println("Строки, меньше 'g': " + lessSet);
 
-        List<String> equalSet = avlTree.query("abc", "equal");
+        List<String> equalSet = avlTree.query("abc", Mode.EQUAL);
         System.out.println("Строка, равная 'abc': " + equalSet);
 
         avlTree.display();

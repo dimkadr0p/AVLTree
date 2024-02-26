@@ -1,5 +1,7 @@
 package org.khachidze;
 
+import org.khachidze.enums.Mode;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -71,13 +73,13 @@ class AVLTree {
         return y;
     }
 
-    public List<String> query(String target, String mode) {
+    public List<String> query(String target, Mode mode) {
         List<String> result = new ArrayList<>();
         queryHelper(root, target, mode, result);
         return result;
     }
 
-    private void queryHelper(Node node, String target, String mode, List<String> result) {
+    private void queryHelper(Node node, String target, Mode mode, List<String> result) {
         if (node == null) {
             return;
         }
@@ -85,7 +87,7 @@ class AVLTree {
         int compareResult = target.compareTo(node.data);
 
         switch (mode) {
-            case "greater":
+            case GREATER:
                 if (compareResult < 0) {
                     queryHelper(node.left, target, mode, result);
                     result.add(node.data);
@@ -94,7 +96,7 @@ class AVLTree {
                     queryHelper(node.right, target, mode, result);
                 }
                 break;
-            case "less":
+            case LESS:
                 if (compareResult > 0) {
                     queryHelper(node.right, target, mode, result);
                     result.add(node.data);
@@ -103,7 +105,7 @@ class AVLTree {
                     queryHelper(node.left, target, mode, result);
                 }
                 break;
-            case "equal":
+            case EQUAL:
                 if (target.equals(node.data)) {
                     result.add(node.data);
                 }
