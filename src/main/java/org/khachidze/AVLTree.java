@@ -3,9 +3,11 @@ package org.khachidze;
 import org.khachidze.enums.Mode;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
-class AVLTree {
+
+class AVLTree implements Iterable<String> {
     private Node root;
 
     public void insert(String data) {
@@ -160,4 +162,8 @@ class AVLTree {
         return findLastNode(node.right);
     }
 
+    @Override
+    public Iterator<String> iterator() {
+        return new AVLTreeIterator(root);
+    }
 }

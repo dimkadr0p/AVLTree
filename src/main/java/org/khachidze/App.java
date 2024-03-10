@@ -33,5 +33,10 @@ public class App {
         System.out.println("Строка, равная 'abc': " + equalSet);
 
         avlTree.display();
+
+        for (String str: avlTree) {
+            System.out.println(str);
+        }
+
     }
 }
